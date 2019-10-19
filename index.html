@@ -33,17 +33,6 @@
         color: white;
     }
 
-    .impossible {
-        margin-left: 5%;
-        margin-top: 2em;
-    }
-
-    .impossible h2 {
-        font-family: 'Colfax Bold';
-        font-size: 2em;
-        
-    }
-
     body {
         font-family: 'Colfax Regular';
         background-color: white;
@@ -52,23 +41,271 @@
         margin:0 0 -2em 0;
     }
 
+    .impossible {
+        margin-left: 5%;
+        margin-top: 3em;
+    }
 
+    .impossible h2 {
+        font-family: 'Colfax Bold';
+        font-size: 2em;
+        
+    }
+
+    #top-bar {
+        display: flex;
+    }
+
+    #total-sales {
+        flex: 0 0 65%;
+	    min-width: 25em;
+	    max-width: 35em;
+
+    }
+
+    #region-sales {
+        flex: 1;
+	    min-width: 25em;
+	    max-width: 35em;
+        margin-left: 2em;
+    }
 
 </style>
 
 <html>
     <head>
-        <title>Sales Data Analysis</title>
+        <title>Sales Visual Analysis</title>
     </head>
     <body>
         <div class='title'>
             <img src='mcdonalds.jpg' id='mc-logo'>
-            <h1>Sales Data Analysis</h1>
+            <h1>Sales Visual Analysis</h1>
         </div>
 
         <div class='impossible'>
             <h2>Impossible Burger Impact</h2>
-            <iframe src="https://e.infogram.com/817e3c9f-5597-4a62-b658-b4418e55493d?src=embed" title="" width="400" height="394" scrolling="no" frameborder="0" style="border:none;" allowfullscreen="allowfullscreen"></iframe><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px;width: 340px"><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Infogram</a></div>
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/series-label.js"></script>
         
+        <div id="top-bar">
+            <!-- Total Sales Line Plot-->
+            <div id="total-sales">
+                <script>
+                    Highcharts.chart('total-sales', {
+
+                        chart: {
+                            style: {
+                                fontFamily: 'Colfax Regular'
+                            }
+                        },
+
+                        legend: {
+                            enabled: false
+                        },
+
+                        credits: {
+                            enabled: false
+                        },
+            
+                        title: {
+                            text: 'Total Sales'
+                        },
+
+                        xAxis: {
+                            categories: ['Jan-16','Feb-16','Mar-16','Apr-16','May-16','Jun-16','Jul-16',
+                                        'Aug-16','Sep-16','Oct-16','Nov-16','Dec-16','Jan-17','Feb-17',
+                                        'Mar-17','Apr-17','May-17','Jun-17','Jul-17','Aug-17','Sep-17',
+                                        'Oct-17','Nov-17','Dec-17','Jan-18','Feb-18','Mar-18','Apr-18',
+                                        'May-18','Jun-18','Jul-18','Aug-18','Sep-18','Oct-18','Nov-18',
+                                        'Dec-18','Jan-19','Feb-19','Mar-19','Apr-19','May-19','Jun-19',
+                                        'Jul-19','Aug-19','Sep-19'],
+                            title: {
+                                text: 'Month'
+                            },
+
+                            plotLines: [{
+                                color: '#FF0000',
+                                width: 2,
+                                value: 33,
+                                label: {
+                                    text: 'Burger Release',
+                                    rotation: 0,
+                                }
+                            }]
+                        },
+
+                        yAxis: {
+                            title: {
+                                text: 'Sales'
+                            },
+                            min: 0,
+                            tickInterval: 2000000
+                        },
+
+                        plotOptions: {
+                            series: {
+                                marker: {
+                                    enabled: false
+                                },
+                                label: {
+                                    connectorAllowed: false
+                                }
+                            }
+                        },
+
+                        series: [{
+                            name: '',
+                            color: 'black',
+                            data: [9350979,9682759,9825257,9716585,10121412,10074600,10263807,10882057,
+                                10609820,10619003,10900886,10498980,11192197,11824369,11437109,11393492,
+                                11596984,11878171,11536662,12559477,12225562,11964460,12532702,12836124,
+                                13048511,13347771,12677300,13251875,13687830,12840517,13338406,13542320,
+                                13247269,11374035,12299535,11539095,12558735,12278447,12074324,12250084,
+                                12686117,11798203,11547979,11954952,11981653]
+                        }],
+
+                        responsive: {
+                            rules: [{
+                                condition: {
+                                    maxWidth: 400
+                                },
+                            }]
+                        }
+
+                        });
+                
+                </script>
+            </div>
+
+            <!-- Sales By Region Line Plot-->
+            <div id="region-sales">
+                <script>
+                    Highcharts.chart('region-sales', {
+
+                        chart: {
+                            style: {
+                                fontFamily: 'Colfax Regular'
+                            }
+                        },
+
+                        legend: {
+                            enabled: true,
+                            layout: 'vertical',
+                            floating: true,
+                            align: 'left',
+                            x: 85,
+                            y: -260
+                        },
+
+                        credits: {
+                            enabled: false
+                        },
+
+                        title: {
+                            text: 'Sales By Region'
+                        },
+
+                        xAxis: {
+                            categories: ['Jan-16','Feb-16','Mar-16','Apr-16','May-16','Jun-16','Jul-16',
+                                        'Aug-16','Sep-16','Oct-16','Nov-16','Dec-16','Jan-17','Feb-17',
+                                        'Mar-17','Apr-17','May-17','Jun-17','Jul-17','Aug-17','Sep-17',
+                                        'Oct-17','Nov-17','Dec-17','Jan-18','Feb-18','Mar-18','Apr-18',
+                                        'May-18','Jun-18','Jul-18','Aug-18','Sep-18','Oct-18','Nov-18',
+                                        'Dec-18','Jan-19','Feb-19','Mar-19','Apr-19','May-19','Jun-19',
+                                        'Jul-19','Aug-19','Sep-19'],
+                            title: {
+                                text: 'Month'
+                            },
+
+                            plotLines: [{
+                                color: '#FF0000',
+                                width: 2,
+                                value: 33,
+                                label: {
+                                    text: 'Burger Release',
+                                    rotation: 0,
+                                }
+                            }]
+                        },
+
+                        yAxis: {
+                            title: {
+                                text: 'Sales'
+                            },
+                            min: 1700000
+                        },
+
+                        plotOptions: {
+                            series: {
+                                marker: {
+                                    enabled: false
+                                },
+                                label: {
+                                    connectorAllowed: false
+                                }
+                            }
+                        },
+
+                        series: [{
+                            name: 'North East',
+                            data: [1920995, 1959215, 2027678, 1997833, 2108274, 2091980, 2140709,
+                                2205580, 2153816, 2168676, 2234393, 2133837, 2301686, 2453707,
+                                2339264, 2359080, 2416127, 2465093, 2390742, 2537829, 2523511,
+                                2444177, 2621029, 2647775, 2640761, 2814604, 2609253, 2722007,
+                                2832936, 2641786, 2742490, 2786194, 2720638, 2320956, 2560458,
+                                2373509, 2593906, 2506324, 2507077, 2496457, 2645148, 2466669,
+                                2406800, 2465004, 2445513]
+                            }, {
+                            name: 'South West',
+                            data: [1874274, 1969544, 2022124, 1990964, 2082809, 2023180, 2095066,
+                                2250241, 2127713, 2170377, 2247531, 2143326, 2260916, 2419317,
+                                2300432, 2328692, 2339363, 2414319, 2357318, 2585228, 2462909,
+                                2429262, 2545089, 2592250, 2637128, 2662916, 2560765, 2676031,
+                                2804042, 2599733, 2688708, 2736147, 2710087, 2288687, 2526092,
+                                2352366, 2524880, 2537643, 2446863, 2540149, 2525821, 2350121,
+                                2322284, 2394712, 2424378]
+                            }, {
+                            name: 'North West',
+                            data: [1871601, 1960649, 1939014, 1946570, 1979297, 2033895, 2015714,
+                                2139988, 2124603, 2135427, 2162560, 2111721, 2248713, 2357234,
+                                2299477, 2237613, 2302404, 2389953, 2302992, 2561169, 2404606,
+                                2426288, 2517947, 2528700, 2629108, 2707575, 2553334, 2639394,
+                                2704249, 2615408, 2637788, 2754238, 2670893, 2288925, 2416298,
+                                2239571, 2557614, 2434056, 2419587, 2403681, 2553187, 2373539,
+                                2323544, 2399015, 2415468]
+                            }, {
+                            name: 'South East',
+                            data: [1825056, 1933574, 1901402, 1908892, 2013220, 1997693, 1977396,
+                                2164116, 2131997, 2089130, 2130742, 2110360, 2216731, 2306213,
+                                2283604, 2242638, 2259342, 2330922, 2275408, 2451183, 2431953,
+                                2359954, 2413490, 2537451, 2577139, 2617479, 2500256, 2659690,
+                                2668593, 2485609, 2630319, 2666406, 2586340, 2223673, 2376833,
+                                2306116, 2491027, 2401803, 2384291, 2396331, 2475925, 2285149,
+                                2240780, 2348987, 2367390]
+                            }, {
+                            name:'Central',
+                            data: [1859053, 1859777, 1935039, 1872326, 1937812, 1927852, 2034922,
+                                2122132, 2071691, 2055393, 2125660, 1999736, 2164151, 2287898,
+                                2214332, 2225469, 2279748, 2277884, 2210202, 2424068, 2402583,
+                                2304779, 2435147, 2529948, 2564375, 2545197, 2453692, 2554753,
+                                2678010, 2497981, 2639101, 2599335, 2559311, 2251794, 2419854,
+                                2267533, 2391308, 2398621, 2316506, 2413466, 2486036, 2322725,
+                                2254571, 2347234, 2328904]
+                            }],
+
+                        responsive: {
+                            rules: [{
+                                condition: {
+                                    maxWidth: 400
+                                },
+                            }]
+                        }
+
+                        });
+                                    
+                </script>
+            </div>
+        </div>  
     </body>
 </html>
