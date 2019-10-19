@@ -16,58 +16,74 @@
     }
 
     .title {
-        margin-top: -9.5em;
+        margin-top: -8.75em;
     }
     .title img {
-        width: 8em;
+        width: 7.5em;
         display:block;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: -1.5em;
+        margin-bottom: -1em;
     }
 
     .title h1 {
         text-align: center;
         font-family: 'Colfax Bold';
-        font-size: 2.5em;
+        font-size: 2em;
         color: white;
     }
 
     body {
         font-family: 'Colfax Regular';
         background-color: white;
-        border-left: 1.5em solid #e62b1e;
-        border-top: 10em solid #e62b1e;
+        border-left: 1em solid #e62b1e;
+        border-right: 1em solid #e62b1e;
+        /*border-image: linear-gradient(to left, #ffcc00 -20%,#e62b1e 50%, #ffcc00 120%);
+        border-image-slice: 1;*/
+        border-top: 9em solid #e62b1e;
         margin:0 0 -2em 0;
     }
 
     .impossible {
         margin-left: 5%;
-        margin-top: 3em;
+        margin-top: 2em;
     }
 
     .impossible h2 {
         font-family: 'Colfax Bold';
         font-size: 2em;
-        
+        /*border-image: linear-gradient(to left, #ffcc00 -20%,#e62b1e 50%, #ffcc00 120%);
+        border-image-slice: 1;*/
+        border-bottom: .2em solid #e62b1e;
     }
 
     #top-bar {
         display: flex;
+        height: 50%;
     }
 
     #total-sales {
         flex: 0 0 65%;
 	    min-width: 35%;
-	    max-width: 45%;
-
+	    max-width: 40%;
     }
 
     #region-sales {
         flex: 1;
 	    min-width: 35%;
-	    max-width: 45%;
+	    max-width: 50%;
         margin-left: 5%;
+    }
+
+    #second-bar {
+        display: flex;
+        height: 50%;
+    }
+
+    #item-sales {
+        flex: 0 0 65%;
+	    min-width: 35%;
+	    max-width: 50%;
     }
 
 </style>
@@ -96,7 +112,7 @@
 
                         chart: {
                             style: {
-                                fontFamily: 'Colfax Regular'
+                                fontFamily: 'Colfax Bold'
                             }
                         },
 
@@ -125,11 +141,11 @@
                             },
 
                             plotLines: [{
-                                color: '#FF0000',
+                                color: 'black',
                                 width: 2,
                                 value: 33,
                                 label: {
-                                    text: 'Burger Release',
+                                    text: 'Burger Launch',
                                     rotation: 0,
                                 }
                             }]
@@ -140,23 +156,25 @@
                                 text: 'Sales'
                             },
                             min: 0,
-                            tickInterval: 2000000
+                            tickInterval: 3000000
                         },
 
                         plotOptions: {
                             series: {
                                 marker: {
-                                    enabled: false
+                                    enabled: false,
+                                    symbol: 'circle'
                                 },
                                 label: {
                                     connectorAllowed: false
-                                }
+                                },
+                                lineWidth: 1.25
                             }
                         },
 
                         series: [{
                             name: '',
-                            color: 'black',
+                            color: '#FF0000',
                             data: [9350979,9682759,9825257,9716585,10121412,10074600,10263807,10882057,
                                 10609820,10619003,10900886,10498980,11192197,11824369,11437109,11393492,
                                 11596984,11878171,11536662,12559477,12225562,11964460,12532702,12836124,
@@ -185,17 +203,15 @@
 
                         chart: {
                             style: {
-                                fontFamily: 'Colfax Regular'
+                                fontFamily: 'Colfax Bold'
                             }
                         },
 
                         legend: {
                             enabled: true,
                             layout: 'vertical',
-                            floating: true,
-                            align: 'left',
-                            x: 85,
-                            y: -260
+                            align: 'right',
+                            y: -200
                         },
 
                         credits: {
@@ -219,11 +235,11 @@
                             },
 
                             plotLines: [{
-                                color: '#FF0000',
+                                color: 'black',
                                 width: 2,
                                 value: 33,
                                 label: {
-                                    text: 'Burger Release',
+                                    text: 'Burger Launch',
                                     rotation: 0,
                                 }
                             }]
@@ -233,22 +249,27 @@
                             title: {
                                 text: 'Sales'
                             },
-                            min: 1700000
+                            min: 0,
+                            tickInterval: 600000
                         },
 
                         plotOptions: {
                             series: {
                                 marker: {
-                                    enabled: false
+                                    enabled: false,
+                                    symbol: 'circle'
                                 },
                                 label: {
-                                    connectorAllowed: false
-                                }
+                                    connectorAllowed: false,
+                                    enabled: false
+                                },
+                                lineWidth: 1
                             }
                         },
 
                         series: [{
                             name: 'North East',
+                            color: '#e62b1e',
                             data: [1920995, 1959215, 2027678, 1997833, 2108274, 2091980, 2140709,
                                 2205580, 2153816, 2168676, 2234393, 2133837, 2301686, 2453707,
                                 2339264, 2359080, 2416127, 2465093, 2390742, 2537829, 2523511,
@@ -258,6 +279,7 @@
                                 2406800, 2465004, 2445513]
                             }, {
                             name: 'South West',
+                            color: '#ffcc00',
                             data: [1874274, 1969544, 2022124, 1990964, 2082809, 2023180, 2095066,
                                 2250241, 2127713, 2170377, 2247531, 2143326, 2260916, 2419317,
                                 2300432, 2328692, 2339363, 2414319, 2357318, 2585228, 2462909,
@@ -267,6 +289,7 @@
                                 2322284, 2394712, 2424378]
                             }, {
                             name: 'North West',
+                            color: '#002664',
                             data: [1871601, 1960649, 1939014, 1946570, 1979297, 2033895, 2015714,
                                 2139988, 2124603, 2135427, 2162560, 2111721, 2248713, 2357234,
                                 2299477, 2237613, 2302404, 2389953, 2302992, 2561169, 2404606,
@@ -276,6 +299,7 @@
                                 2323544, 2399015, 2415468]
                             }, {
                             name: 'South East',
+                            color: ' #97d700',
                             data: [1825056, 1933574, 1901402, 1908892, 2013220, 1997693, 1977396,
                                 2164116, 2131997, 2089130, 2130742, 2110360, 2216731, 2306213,
                                 2283604, 2242638, 2259342, 2330922, 2275408, 2451183, 2431953,
@@ -285,6 +309,7 @@
                                 2240780, 2348987, 2367390]
                             }, {
                             name:'Central',
+                            color: '#ff6c2e',
                             data: [1859053, 1859777, 1935039, 1872326, 1937812, 1927852, 2034922,
                                 2122132, 2071691, 2055393, 2125660, 1999736, 2164151, 2287898,
                                 2214332, 2225469, 2279748, 2277884, 2210202, 2424068, 2402583,
@@ -306,6 +331,125 @@
                                     
                 </script>
             </div>
-        </div>  
+        </div>
+
+        <div id="second-bar">
+            <!-- Sales By Region Line Plot-->
+            <div id="item-sales">
+                <script>
+                    Highcharts.chart('item-sales', {
+
+                        chart: {
+                            style: {
+                                fontFamily: 'Colfax Bold'
+                            }
+                        },
+
+                        legend: {
+                            enabled: true,
+                            layout: 'vertical',
+                            align: 'right',
+                            y: -200
+                        },
+
+                        credits: {
+                            enabled: false
+                        },
+
+                        title: {
+                            text: 'Sales By Item'
+                        },
+
+                        xAxis: {
+                            categories: ['Jan-16','Feb-16','Mar-16','Apr-16','May-16','Jun-16','Jul-16',
+                                        'Aug-16','Sep-16','Oct-16','Nov-16','Dec-16','Jan-17','Feb-17',
+                                        'Mar-17','Apr-17','May-17','Jun-17','Jul-17','Aug-17','Sep-17',
+                                        'Oct-17','Nov-17','Dec-17','Jan-18','Feb-18','Mar-18','Apr-18',
+                                        'May-18','Jun-18','Jul-18','Aug-18','Sep-18','Oct-18','Nov-18',
+                                        'Dec-18','Jan-19','Feb-19','Mar-19','Apr-19','May-19','Jun-19',
+                                        'Jul-19','Aug-19','Sep-19'],
+                            title: {
+                                text: 'Month'
+                            },
+
+                            plotLines: [{
+                                color: 'black',
+                                width: 2,
+                                value: 33,
+                                label: {
+                                    text: 'Burger Launch',
+                                    rotation: 0,
+                                }
+                            }]
+                        },
+
+                        yAxis: {
+                            title: {
+                                text: 'Sales'
+                            },
+                            min: 0,
+                            tickInterval: 2000000
+                        },
+
+                        plotOptions: {
+                            series: {
+                                marker: {
+                                    enabled: false,
+                                    symbol: 'circle'
+                                },
+                                label: {
+                                    connectorAllowed: false,
+                                    enabled: false
+                                },
+                                lineWidth: 1
+                            }
+                        },
+
+                        series: [{
+                            name: 'Hamburger',
+                            color: '#e62b1e',
+                            data: [5598648, 5840210, 5909899, 5799715, 6080407, 6056108, 6163373,
+                                   6537463, 6382884, 6343865, 6490244, 6340076, 6685774, 7152982,
+                                   6817973, 6863707, 6964094, 7167558, 6840830, 7497876, 7352926,
+                                   7170291, 7549336, 7707776, 7887763, 7990228, 7654312, 7947352,
+                                   8186393, 7629715, 8012517, 8060250, 7922921, 6781234, 7386402,
+                                   6954506, 7568561, 7350256, 7267799, 7317841, 7620829, 7124175,
+                                   6956441, 7190660, 7142860]
+                            }, {
+                            name: 'Chicken Fillet',
+                            color: '#ffcc00',
+                            data: [2352671, 2394392, 2461847, 2455722, 2533501, 2504226, 2547327,
+                                   2723694, 2617860, 2663903, 2748759, 2599316, 2808128, 2911445,
+                                   2886869, 2813861, 2878324, 2962089, 2944269, 3173062, 3063462,
+                                   2987291, 3096246, 3186172, 3234631, 3328733, 3139645, 3285062,
+                                   3438398, 3256752, 3338673, 3467244, 3327230, 2862020, 3052314,
+                                   2874069, 3128423, 3061564, 3003545, 3073157, 3175075, 2921766,
+                                   2852679, 2995435, 3023767]
+                            }, {
+                            name: 'Fish Fillet',
+                            color: '#ff6c2e',
+                            data: [1399660, 1448157, 1453511, 1461148, 1507504, 1514266, 1553107,
+                                   1620900, 1609076, 1611235, 1661883, 1559588, 1698295, 1759942,
+                                   1732267, 1715924, 1754566, 1748524, 1751563, 1888539, 1809174,
+                                   1806878, 1887120, 1942176, 1926117, 2028810, 1883343, 2019461,
+                                   2063039, 1954050, 1987216, 2014826, 1997118, 1730781, 1860819,
+                                   1710520, 1861751, 1866627, 1802980, 1859086, 1890213, 1752262,
+                                   1738859, 1768857, 1815026]
+                            }],
+
+                        responsive: {
+                            rules: [{
+                                condition: {
+                                    maxWidth: 400
+                                },
+                            }]
+                        }
+
+                        });
+                                    
+                </script>
+            </div>
+
+        </div>
     </body>
 </html>
