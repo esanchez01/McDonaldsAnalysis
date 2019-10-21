@@ -38,10 +38,9 @@
         background-color: white;
         border-left: 1em solid #e62b1e;
         border-right: 1em solid #e62b1e;
-        /*border-image: linear-gradient(to left, #ffcc00 -20%,#e62b1e 50%, #ffcc00 120%);
-        border-image-slice: 1;*/
+        border-bottom: 1em solid #e62b1e;
         border-top: 9em solid #e62b1e;
-        margin:0 0 -2em 0;
+        margin:0 0 0 0;
     }
 
     .impossible {
@@ -52,8 +51,6 @@
     h2 {
         font-family: 'Colfax Bold';
         font-size: 2em;
-        /*border-image: linear-gradient(to left, #ffcc00 -20%,#e62b1e 50%, #ffcc00 120%);
-        border-image-slice: 1;*/
         border-bottom: .2em solid #e62b1e;
     }
 
@@ -78,9 +75,9 @@
     #item-sales {
         margin-top: 2em;
         margin-bottom: 0;
-        margin-right: 25%;
-        margin-left: 25%;
-        max-width: 50%;
+        margin-right: 21%;
+        margin-left: 21%;
+        max-width: 53%;
         height: 20em;
     }
 
@@ -97,7 +94,7 @@
 
     #bottom-bar {
         display: flex;
-        height: 45%;
+        height: 20em;
     }
 
     #consumer-item {
@@ -106,10 +103,27 @@
 	    max-width: 40%;
     }
 
-    #item-region {
+    #fish-weekday {
         flex: 1;
 	    min-width: 35%;
-	    max-width: 50%;
+	    max-width: 48%;
+        height: 19em;
+    }
+
+    #item-region {
+        margin-top: 2em;
+        margin-bottom: 0;
+        margin-right: 28%;
+        margin-left: 22%;
+        max-width: 50%;
+        height: 21.5em;
+    }
+
+    #trends-description {
+        font-size: 18px;
+        margin-left: 2em;
+        margin-right: 3em;
+        margin-bottom: 2em;
     }
 
 </style>
@@ -184,7 +198,7 @@
 
                             yAxis: {
                                 title: {
-                                    text: 'Sales'
+                                    text: 'Sales (USD)'
                                 },
                                 min: 0,
                                 tickInterval: 3000000
@@ -283,7 +297,7 @@
 
                             yAxis: {
                                 title: {
-                                    text: 'Sales'
+                                    text: 'Sales (USD)'
                                 },
                                 min: 0,
                                 tickInterval: 600000
@@ -425,7 +439,7 @@
 
                         yAxis: {
                             title: {
-                                text: 'Sales'
+                                text: 'Sales (USD)'
                             },
                             min: 0,
                             tickInterval: 2000000
@@ -499,7 +513,7 @@
                 <p> During the month of the Impossible Burger's release, October 2018, McDonald's total 
                     sales dropped $1,873,234 (14.1%) when compared to the September 2018 sales. Although 
                     fluctuation in sales are normal and expected, the average drop up to this date, 
-                    January 2016 to September 2018, was just 2.7% with the highest occurring on June 2018 
+                    January 2016 through September 2018, was just 2.7% with the highest occurring on June 2018 
                     at 6.2%. The performance and fluctuation in sales across the five different regions 
                     were similar as depicted above. Nonetheless, each of these regions faced dips upon the 
                     burger's release. The North Eastern region saw a decline of 14.3%, the South West 15.5%, 
@@ -514,7 +528,7 @@
                     under 3% during the January 2016 to September 2018 period.</p>
 
                 <p> Since the burger's release, McDonald's total sales have grown 5.3%. This same 
-                    period of time, October 2017 to September 2018, previously resulted in a growth 
+                    period of time, October 2017 through September 2018, previously resulted in a growth 
                     of 10.7%. This slow growth has distributed itself across all regions and menu 
                     items as depicted in the charts above. </p>
             </div>
@@ -587,76 +601,185 @@
                         });
                     </script>
                 </div>
-                <div id="item-region">
-                    <script>
-                        Highcharts.chart('item-region', {
-                            chart: {
-                                type: 'column',
-                                style: {
-                                    fontFamily: 'Colfax Bold',
-                                }
-                            },
-                            title: {
-                                text: 'Menu Item Sales By Region'
-                            },
-                            credits: {
-                                enabled: false
-                            },
-                            xAxis: {
-                                categories: [
-                                    'North East',
-                                    'South West',
-                                    'North West',
-                                    'South East',
-                                    'Central'
-                                ],
-                                title: {
-                                    text: 'Region'
+
+                <div id="fish-weekday">
+                        <script>
+                            Highcharts.chart('fish-weekday', {
+                                chart: {
+                                    type: 'column',
+                                    style: {
+                                        fontFamily: 'Colfax Bold',
+                                    }
                                 },
-                                crosshair: true
-                            },
-                            yAxis: {
-                                min: 0,
                                 title: {
-                                    text: 'Sales'
+                                    text: 'Average Fish Fillet Sales By Weekday (Jan 2016)',
+                                    x: 30,
+                                    y: 13,
+                                    margin: 25
                                 },
-                                min: 0,
-                                tickInterval: 10000000
-                            },
-                            tooltip: {
-                                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                                    '<td style="padding:0"><b>${point.y:.1f}</b></td></tr>',
-                                footerFormat: '</table>',
-                                shared: true,
-                                useHTML: true
-                            },
-                            plotOptions: {
-                                column: {
-                                    pointPadding: 0.2,
-                                    borderWidth: 0
-                                }
-                            },
-                            series: [{
-                                name: 'Hamburger',
-                                color: '#e62b1e',
-                                data: [65362334, 64421707, 63572000, 62328614, 61582375]
-
-                            }, {
-                                name: 'Chicken Fillet',
-                                color: '#ffcc00',
-                                data: [27233220, 26815953, 26341429, 26039450, 25724566]
-
-                            }, {
-                                name: 'Fish Fillet',
-                                color: '#002664',
-                                data: [16345942, 16104137, 15821178, 15614539, 15540968]
-
-                            }]
-                        });
-                    </script>
+                                credits: {
+                                    enabled: false
+                                },
+    
+                                legend: {
+                                    enabled: false
+                                },
+    
+                                xAxis: {
+                                    categories: [
+                                        'Monday',
+                                        'Tuesday',
+                                        'Wednesday',
+                                        'Thursday',
+                                        'Friday',
+                                        'Saturday',
+                                        'Sunday'
+                                    ],
+                                    title: {
+                                        text: 'Weekday'
+                                    },
+                                    crosshair: true
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: 'Sales (USD)'
+                                    },
+                                    min: 0,
+                                    tickInterval: 8000
+                                },
+                                tooltip: {
+                                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                        '<td style="padding:0"><b>${point.y:.1f}</b></td></tr>',
+                                    footerFormat: '</table>',
+                                    shared: true,
+                                    useHTML: true
+                                },
+                                plotOptions: {
+                                    column: {
+                                        pointPadding: 0.2,
+                                        borderWidth: 0
+                                    }
+                                },
+                                series: [{
+                                    name: 'Fish Fillet',
+                                    color: '#002664',
+                                    data: [44751.50, 44156.25, 46205.50, 48357.50, 52766.80, 40106.40, 40282.20]
+    
+                                }]
+                            });
+                        </script>
+                    </div>
                 </div>
-            </div>
+
+                <!-- Menu Items By Region Bar Chart-->
+                <div id="item-region">
+                        <script>
+                            Highcharts.chart('item-region', {
+                                chart: {
+                                    type: 'column',
+                                    style: {
+                                        fontFamily: 'Colfax Bold',
+                                    }
+                                },
+                                title: {
+                                    text: 'Menu Item Sales By Region',
+                                    x: 20
+                                },
+                                credits: {
+                                    enabled: false
+                                },
+                                xAxis: {
+                                    categories: [
+                                        'North East',
+                                        'South West',
+                                        'North West',
+                                        'South East',
+                                        'Central'
+                                    ],
+                                    title: {
+                                        text: 'Region'
+                                    },
+                                    crosshair: true
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: 'Sales (USD)'
+                                    },
+                                    min: 0,
+                                    tickInterval: 10000000
+                                },
+                                tooltip: {
+                                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                        '<td style="padding:0"><b>${point.y:.1f}</b></td></tr>',
+                                    footerFormat: '</table>',
+                                    shared: true,
+                                    useHTML: true
+                                },
+                                plotOptions: {
+                                    column: {
+                                        pointPadding: 0.2,
+                                        borderWidth: 0
+                                    }
+                                },
+                                series: [{
+                                    name: 'Hamburger',
+                                    color: '#e62b1e',
+                                    data: [65362334, 64421707, 63572000, 62328614, 61582375]
+
+                                }, {
+                                    name: 'Chicken Fillet',
+                                    color: '#ffcc00',
+                                    data: [27233220, 26815953, 26341429, 26039450, 25724566]
+
+                                }, {
+                                    name: 'Fish Fillet',
+                                    color: '#002664',
+                                    data: [16345942, 16104137, 15821178, 15614539, 15540968]
+
+                                }]
+                            });
+                        </script>
+                    </div>
+
+                    <div id="trends-description">
+                        <p> After an in-depth analysis of the data provided, we have gained a greater 
+                            understanding of customer interactions and behaviors. The Data Science 
+                            team anticipates that these finding will drive sales and help outperform 
+                            our competitors. </p>
+                    
+                        <p> Over the lifetime of the data, January 2016 through September 2019, menu
+                            item sales have been consistently divided with Hamburger sales topping the list 
+                            at 60%, Chicken Fillet at 25%, and Fish Fillet at 15% of sales. Surprisingly, 
+                            this composition remained the same prior to and after the release of the 
+                            Impossible Burger. No evidence of the burger's release affecting customer's
+                            menu item selections was found. </p>
+
+                        <p> Customer behavior across the different regions of the United States also appear
+                            to be strikingly similar as each region generally follows the 60/25/15 split as
+                            mentioned above. Despite the common belief that different regions have their own
+                            tendencies, the data does reflect such behaviors. This shows that region-specific
+                            advertising may not be necessary, and the United States can generally be treated
+                            as a single audience when it pertains to these menu items. It is also important 
+                            to note that the average sales of each month remain relatively uniform with the
+                            month of August having a slight, yet insignificant, edge.</p>
+
+                        <p> Despite the consistencies seen throughout sales and regional behaviors, weekday 
+                            menu item preferences were uncovered. When analyzing the January 2016 daily
+                            sales, Fish Fillet sales were noticeably greatest during Fridays as can be seen 
+                            in the chart above. Heading into the weekend, Fish Fillet sales then dip 24%. 
+                            Interestingly, such fluctuations do not occur with the Hamburger and 
+                            Chicken Fillet as their weekday sales remain relatively consistent. </p>
+
+                        <p> In order to uncover more trends and customer behaviors, additional sales data 
+                            will be necessary. Recent daily sales data, much like that provided from 
+                            January 2016, will be tremendously useful in helping McDonald's better connect
+                            with its customers and eliminate the effects of competitor actions. </p>
+
+                    </div>
         </div>
     </body>
 </html>
